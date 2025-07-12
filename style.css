@@ -1,0 +1,191 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+#game {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* === ФОН === */
+#background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* === ШАХТЁР === */
+#miner-sprite-wrapper {
+  position: absolute;
+  bottom: 2vh;
+  left: 2vw;
+  transform: scale(2);
+  transform-origin: bottom left;
+  z-index: 2;
+}
+
+#miner-sprite {
+  width: 180px;
+  height: 180px;
+  background: url('assets/miner-sprite.png') no-repeat;
+  background-size: 14760px 180px;
+  animation: minerAnim 3s steps(82) infinite;
+}
+
+@keyframes minerAnim {
+  from { background-position: 0 0; }
+  to   { background-position: -14760px 0; }
+}
+
+/* === ТЕКСТ НАД ШАХТЁРОМ === */
+#miner-text {
+  position: absolute;
+  left: 0px;
+  bottom: 190px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: clamp(11px, 1vw, 12px);
+  white-space: nowrap;
+  z-index: 3;
+}
+
+/* === ИНВЕНТАРЬ === */
+#invetary-sprite-wrapper {
+  position: absolute;
+  top: 2vh;
+  right: 2vw;
+  transform: scale(1.2);
+  transform-origin: top right;
+  z-index: 3;
+}
+
+#invetary-sprite {
+  width: 216px;
+  height: 216px;
+  background: url('assets/invetary-sprite.png') no-repeat;
+  background-size: 4752px 216px;
+  animation: invetaryAnim 3s steps(21) forwards;
+}
+
+@keyframes invetaryAnim {
+  from { background-position: 0 0; }
+  to   { background-position: -4536px 0; }
+}
+
+/* === ПРЕДМЕТЫ В ИНВЕНТАРЕ === */
+#inventory-items {
+  position: absolute;
+  top: 50px;
+  right: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  z-index: 4;
+}
+
+.inventory-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2px 6px;
+  border-radius: 5px;
+  color: white;
+  font-size: clamp(10px, 0.8vw, 14px);
+}
+
+.inventory-item img {
+  width: 28px;
+  height: 28px;
+}
+
+/* === ПАДАЮЩИЕ ПРЕДМЕТЫ === */
+#falling-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30vw;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.falling {
+  position: absolute;
+  width: clamp(36px, 3.5vw, 60px);
+  height: clamp(36px, 3.5vw, 60px);
+  z-index: 1;
+  pointer-events: auto;
+}
+
+/* === КИРКА === */
+#pickaxe {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  display: none;
+  z-index: 4;
+  transform: rotate(-45deg);
+  transition: transform 0.2s ease;
+}
+
+.swing {
+  transform: rotate(0deg) scale(1.3);
+}
+
+/* === АДАПТИВНОЕ МАСШТАБИРОВАНИЕ === */
+@media (max-width: 600px) {
+  #miner-sprite-wrapper {
+    transform: scale(1.2);
+  }
+
+  #invetary-sprite-wrapper {
+    transform: scale(1.0);
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  #miner-sprite-wrapper {
+    transform: scale(1.5);
+  }
+
+  #invetary-sprite-wrapper {
+    transform: scale(1.1);
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1440px) {
+  #miner-sprite-wrapper {
+    transform: scale(1.8);
+  }
+
+  #invetary-sprite-wrapper {
+    transform: scale(1.2);
+  }
+}
+
+@media (min-width: 1441px) {
+  #miner-sprite-wrapper {
+    transform: scale(2);
+  }
+
+  #invetary-sprite-wrapper {
+    transform: scale(1.2);
+  }
+}

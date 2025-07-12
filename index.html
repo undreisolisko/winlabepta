@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Miner Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="game">
+    <img src="assets/stone_wall.png" id="background" />
+
+    <!-- Шахтёр + текст вместе -->
+    <div id="miner-sprite-wrapper">
+      <div id="miner-sprite"></div>
+      <div id="miner-text">Нажимай на падающие предметы!</div>
+    </div>
+
+    <!-- Инвентарь + предметы вместе -->
+    <div id="invetary-sprite-wrapper">
+      <div id="invetary-sprite"></div>
+      <div id="inventory-items"></div>
+    </div>
+
+    <!-- Падающие предметы -->
+    <div id="falling-container"></div>
+
+    <!-- Кирка -->
+    <img id="pickaxe" src="assets/pickaxe.png" />
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
